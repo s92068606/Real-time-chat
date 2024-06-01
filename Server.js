@@ -8,6 +8,14 @@
  const app = express();
  //const server = http.createServer(app);
  const server = require("http").createServer(app);
+
+ //connect database
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'chat_app'
+});
  
  //const io = new Server(server);
  const io = require("socket.io")(server);
