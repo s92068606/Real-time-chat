@@ -63,6 +63,13 @@ db.connect((err) => {
    });
  
    socket.on("chat", function(message){
+    // Save the message to the database
+    const query = 'INSERT INTO messages (username, text) VALUES (?, ?)';
+    db.query(query, [message.username, message.text], (err) => {
+      if (err) throw err;
+      console.log('Message inserted into database');
+    });
+    
      socket.broadcast.emit("chat", message);
    });
  });
