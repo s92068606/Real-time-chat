@@ -6,6 +6,15 @@
 
     let uname;
 
+    // Request notification permission
+    if (Notification.permission === "default") {
+        Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+                console.log("Notification permission granted.");
+            }
+        });
+    }
+
     app.querySelector(".join-screen #join-user").addEventListener("click", function(){
         let username = app.querySelector(".join-screen #username").value;
         if(username.length == 0){
