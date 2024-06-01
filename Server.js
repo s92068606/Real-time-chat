@@ -35,6 +35,18 @@ db.connect((err) => {
     if (err) throw err;
     console.log('Using chat_app database');
   });
+
+  //create table
+  db.query(`CREATE TABLE IF NOT EXISTS messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    text TEXT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  )`, (err) => {
+    if (err) throw err;
+    console.log('Messages table created or exists already');
+  });
+});
  
  //const io = new Server(server);
  const io = require("socket.io")(server);
