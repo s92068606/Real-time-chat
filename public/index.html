@@ -1,0 +1,65 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+   <div class="app">
+        <div class="screen join-screen active">
+            <div class="form">
+                <h2>Join chat room</h2>
+                <div class="form-input">
+                    <label>Username</label>
+                    <input type="text" id="username">
+                </div>
+
+                <div class="form-input">
+                    <button id="join-user">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen chat-screen">
+                <div class="header">
+                    <div class="logo">Chatroom</div>
+                    <button id="exit-chat">Exit</button>
+                </div>
+
+            <div class="messages">
+                <!--Dummy message :
+                <div class="message my-message">
+                    <div>
+                        <div class="name">You</div>
+                        <div class="text">Hi</div>
+                    </div>
+                </div>
+                <div class="update">
+                    ABC joined the conversation
+                </div>
+                <div class="message other-message">
+                    <div>
+                        <div class="name">You</div>
+                        <div class="text">Hi</div>
+                    </div>
+                </div>   -->
+            </div>
+
+            <div class="typebox">
+                <input type="text" id="message-input" >
+                <button id="send-message">Send</button>
+            </div>
+        </div>
+    </div>                            
+
+ <!-- <ul id="messages"></ul>
+  <form id="form" action="">
+    <input id="input" autocomplete="off" /><button>Send</button>
+  </form>  -->
+  
+  <script type="text/javascript" src="socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
