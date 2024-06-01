@@ -16,6 +16,25 @@ const db = mysql.createConnection({
   password: '',
   database: 'chat_app'
 });
+
+//check data connectivity
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the MySQL database.');
+  
+  // Create database and table if not exists
+  db.query(`CREATE DATABASE IF NOT EXISTS chat_app`, (err) => {
+    if (err) throw err;
+    console.log('Database created or exists already');
+  });
+
+  db.query(`USE chat_app`, (err) => {
+    if (err) throw err;
+    console.log('Using chat_app database');
+  });
  
  //const io = new Server(server);
  const io = require("socket.io")(server);
