@@ -46,14 +46,17 @@
     app.querySelector(".chat-screen #exit-chat").addEventListener("click", function() {
             socket.emit("exituser", uname);
             window.location.href = window.location.href;
+            
     });
 
     socket.on("update", function(update) {
         renderMessage("update",update);
+        showNotification(update);
     });
     
     socket.on("chat", function(message) {
         renderMessage("other", message);
+        showNotification(`${message.username}: ${message.text}`);
     }); 
 
     function renderMessage(type,message){
@@ -91,4 +94,11 @@
         //scroll chat to end
         messageContainer.scrollTop = messageContainer.scrollHeight - messageContainer.clientHeight;
     } 
+
+    function showNotification(message) {
+        if (Notification.permission === "granted") {
+            new Notification("Chat App", { body: message });
+        }
+    }
+    
 })(); 
